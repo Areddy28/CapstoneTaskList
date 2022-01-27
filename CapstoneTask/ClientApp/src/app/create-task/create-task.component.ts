@@ -1,4 +1,6 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../Task';
 import { TaskService } from '../task.service';
 
 @Component({
@@ -11,19 +13,26 @@ export class CreateTaskComponent implements OnInit {
 
   constructor(private taskService : TaskService ) { }
 
-  ngOnInit() {
+  ngOnInit() {  
   }
 
-//   CreateTask() {
-//     let name: string = (<HTMLInputElement>document.getElementById("Title")).value; 
-//     console.log(name); 
-//     let description: string = (<HTMLInputElement>document.getElementById("Year")).value;  
-//     console.log(description); 
-//     let dateDue: Date = (<HTMLInputElement>document.getElementById("RunTime")).value;  
-//     console.log(dateDue); 
-//     let completed: string = (<HTMLInputElement>document.getElementById("Genre")).value;  
-//     console.log(completed);  
+  CreateTask() {
+    let name: string = (<HTMLInputElement>document.getElementById("Name")).value; 
+    console.log(name); 
+    let description: string = (<HTMLInputElement>document.getElementById("Description")).value;  
+    console.log(description); 
+    let dateDue: Date =  (<HTMLInputElement>document.getElementById("DateDue")).valueAsDate;  
+    console.log(dateDue); 
+    let completed: boolean = Boolean.call(<HTMLInputElement>document.getElementById("Completed")).value;  
+    console.log(completed);  
     
-//     let newTask: Task
-
+     let newTask: Task = {
+       id: 0, name: name, description: description, dateDue: dateDue,
+       completed: true
+     };
+     this.taskService.CreateTask(newTask).subscribe(
+      (response: any ) => { location.reload() }
+    ); 
+}
+  
 }

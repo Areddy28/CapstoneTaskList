@@ -1,9 +1,9 @@
 export interface Task{
-    Id:number; 
-    Name:string; 
-    Description:string; 
-    DateDue:Date; 
-    Completed:boolean; 
+    id:number; 
+    name:string; 
+    description:string; 
+    dateDue:Date; 
+    completed:boolean; 
 }
 
 export class Convert {

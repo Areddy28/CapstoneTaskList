@@ -35,9 +35,9 @@ namespace CapstoneTask
             }
         }
 
-        public void InsertTask(Task m)
+        public void InsertTask(Task t)
         {
-            string sql = $"insert into movies values({0}, '{m.Name}', '{m.Description}', {m.DateDue}, {m.Completed})";
+            string sql = $"insert into tasks values(0, '{t.Name}', '{t.Description}', '{t.DateDue.ToString("yyyy-MM-dd hh:mm:ss")}', {t.Completed})";
 
             using (var connect = new MySqlConnection(Secret.Connection))
             {
@@ -48,5 +48,20 @@ namespace CapstoneTask
 
             }
         }
+
+        public void DeleteTask(int id)
+        {
+            string sql = $"delete from tasks where id={id}";
+            using (var connect = new MySqlConnection(Secret.Connection))
+            {
+
+                connect.Open();
+                connect.Query<Task>(sql);
+                connect.Close();
+
+            }
+        }
+
+
     }
 }

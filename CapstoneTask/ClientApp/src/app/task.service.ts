@@ -20,5 +20,20 @@ export class TaskService {
   GetTask(id :number) : Observable<object> {
     return this.http.get(this.url + "/get/" + id); 
   }
+
+  CreateTask(t: Task){
+    // console.log(this.url + "/makeNew/"); 
+    console.log(t); 
+    return this.http.post(this.url + "/makeNew/", t);
+      // (response:any) => {console.log("It worked!")}
+  }
+
+  DeleteTask(id: number) {
+    return this.http.delete(this.url + "/delete/" + id); 
+  }
+
+
+
+
   
 }

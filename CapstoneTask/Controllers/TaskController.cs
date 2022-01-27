@@ -25,9 +25,15 @@ namespace CapstoneTask.Controllers
         }
 
         [HttpPost("makeNew")]
-        public void PostMovie(Task m)
+        public void PostTask(Task t)
         {
-            db.InsertTask(m);
+            db.InsertTask(t);
+        }
+
+        [HttpDelete("delete/{id}")]
+        public void DeleteTask(int id)
+        {
+            db.DeleteTask(id);
         }
     }
 }
