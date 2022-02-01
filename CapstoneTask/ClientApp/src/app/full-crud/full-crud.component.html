@@ -1,12 +1,14 @@
-<div style= "border: 1px solid black" *ngFor="let t of taks; let i = index">
+<div style= "border: 1px solid black" *ngFor="let t of tasks; let i = index">
     <div id="display{{t.id}}">
-    <p>Title: {{t.name}}</p>
-    <p>Genre: {{t.description}}</p>
-    <p>Year: {{t.dateDue}}</p>
-    <p>Run Time: {{t.completed}}</p>
+    <p>Name: {{t.name}}</p>
+    <p>Description: {{t.description}}</p>
+    <p>Due Date: {{t.dateDue}}</p>
+    <p>Completed: {{t.completed}}</p>
     <p>Id: {{t.id}}</p>
+    
 
     <button (click)="DeleteEntry(t.id, i)">Delete {{t.name}}</button>
     </div>
 
+</div>
     
